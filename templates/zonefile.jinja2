@@ -1,4 +1,4 @@
-{% import 'dns.jinja2' as dns %}
+{% import 'dns.jinja2' as dns with context %}
 
 {{ dns.TTL(item.ttl) }}
 
