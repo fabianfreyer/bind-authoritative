@@ -10,8 +10,8 @@ $TTL {{ ttl }}
 {{ entry }} {{ direction|upper }} {{ type|upper }} {% if priority != 0 %}{{priority}}{% endif %} {{ value }}
 {%- endmacro %}
 
-{% macro SOA(ns, admin_email, serial=1, refresh="3h", retry="1h", expire="1w" negative_cache="1h") -%}
-{{ record('@', '%s %s (%s %s %s %s %s %s)' % (ns, admin_email, serial, refresh, retry, expire, negative_cache), type='soa') }}
+{% macro SOA(ns, admin_email, serial=1, refresh="3h", retry="1h", expire="1w", negative_cache="1h") -%}
+{{ record('@', '%s %s (%s %s %s %s %s)' % (ns, admin_email, serial, refresh, retry, expire, negative_cache), type='soa') }}
 {%- endmacro %}
 
 {% macro NS(ns) %}
