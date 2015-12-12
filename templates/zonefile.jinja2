@@ -1,7 +1,7 @@
 {% import 'dns.jinja2' as dns with context %}
 {{ dns.TTL(item.ttl) }}
-{# SOA record #}
-{{ dns.SOA(dns.domain(item.nameservers[0]+item.domain), dns.domain('hostmaster.'+item.domain)) }}
+{# SOA record, nameserver 0 is authorative #}
+{{ dns.SOA(dns.domain(item.nameservers[0]), dns.domain('hostmaster.'+item.domain)) }}
 {# NS records #}
 {% for ns in item.nameservers %}
 {{ dns.NS(dns.domain(ns)) }}
