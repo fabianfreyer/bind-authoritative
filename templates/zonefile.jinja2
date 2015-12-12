@@ -1,40 +1,40 @@
 {% import 'dns.jinja2' %}
 
-{{ TTL(item.value.ttl) }}
+{{ TTL(item.ttl) }}
 
-{{ SOA(domain(item.value.nameservers[0]+item.key), domain('hostmaster.'+zone_name)) }}
+{{ SOA(domain(item.nameservers[0]+item.domain), domain('hostmaster.'+item.domain)) }}
 
-{% for ns in item.value.nameservers %}
+{% for ns in item.nameservers %}
 {{ NS(domain(ns)) }}
 {% endfor %}
 
-{% if item.value.MX is defined %}
-{% for mx in item.value.MX %}
+{% if item.MX is defined %}
+{% for mx in item.MX %}
 {% if mx is mapping %}
 {{
   MX(
-    domain(item.key) if name not in mx else mx.name,
+    domain(item.domain) if name not in mx else mx.name,
     mx.value,
     10 if priority not in mx else mx.priority)
 }}
 {% else %}
 {{
   MX(
-    domain(item.key),
+    domain(item.domain),
     mx)
 }}
 {% endif %}
 {% endfor %}
 {% endif %}
 
-{% if item.value.A is defined %}
-{% for name,ip in item.value.A.items() %}
+{% if item.A is defined %}
+{% for name,ip in item.A.items() %}
 {{ A(name, ip) }}
 {% endfor %}
 {% endif %}
 
-{% if item.value.CNAME is defined %}
-{% for name, cname in item.value.CNAME.items() %}
+{% if item.CNAME is defined %}
+{% for name, cname in item.CNAME.items() %}
 {{ CNAME(name, cname) }}
 {% endfor %}
 {% endif %}

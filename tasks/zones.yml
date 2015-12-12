@@ -9,8 +9,8 @@
 
 - name: zones > Templates
   template:
-    src:  "{{ item.value.template | default('zonefile.jinja2') }}"
-    dest: "{{ elao_bind_zones_dir }}/{{ item.value.file | default('db.%s.zone' % item.key) }}"
+    src:  "{{ item.template | default('zonefile.jinja2') }}"
+    dest: "{{ elao_bind_zones_dir }}/{{ item.file | default('db.%s.zone' % item.domain) }}"
     owner: root
     group: "{{ elao_bind_group }}"
     mode:  0644
