@@ -1,0 +1,40 @@
+{% import 'dns.jinja2' %}
+
+{{ TTL(item.value.ttl) }}
+
+{{ SOA(domain(item.value.nameservers[0]+item.key), domain('hostmaster.'+zone_name)) }}
+
+{% for ns in item.value.nameservers %}
+{{ NS(domain(ns)) }}
+{% endfor %}
+
+{% if item.value.MX is defined %}
+{% for mx in item.value.MX %}
+{% if mx is mapping %}
+{{
+  MX(
+    domain(item.key) if name not in mx else mx.name,
+    mx.value,
+    10 if priority not in mx else mx.priority)
+}}
+{% else %}
+{{
+  MX(
+    domain(item.key),
+    mx)
+}}
+{% endif %}
+{% endfor %}
+{% endif %}
+
+{% if item.value.A is defined %}
+{% for name,ip in item.value.A.items() %}
+{{ A(name, ip) }}
+{% endfor %}
+{% endif %}
+
+{% if item.value.CNAME is defined %}
+{% for name, cname in item.value.CNAME.items() %}
+{{ CNAME(name, cname) }}
+{% endfor %}
+{% endif %}
