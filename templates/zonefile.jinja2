@@ -31,6 +31,12 @@
 {{ dns.A(name, ip) }}
 {% endfor %}
 {% endif %}
+{# AAAA Records #}
+{% if item.AAAA is defined %}
+{% for name,ip in item.AAAA.items() %}
+{{ dns.AAAA(name, ip) }}
+{% endfor %}
+{% endif %}
 {# CNAMEs #}
 {% if item.CNAME is defined %}
 {% if item.CNAME is defined %}
