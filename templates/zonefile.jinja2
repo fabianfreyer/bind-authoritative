@@ -33,7 +33,9 @@
 {% endif %}
 {# CNAMEs #}
 {% if item.CNAME is defined %}
+{% if item.CNAME is defined %}
 {% for name, cname in item.CNAME.items() %}
 {{ dns.CNAME(name, cname) }}
 {% endfor %}
+{% endif %}
 {% endif %}
