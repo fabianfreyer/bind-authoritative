@@ -33,3 +33,7 @@ $TTL {{ ttl }}
 {% macro CNAME(entry, value, priority=0) %}
 {{ record(entry, value, type='cname', priority=priority) }}
 {% endmacro %}
+
+{% macro TXT(entry, value, priority=0) %}
+{{ record(entry, value, type='txt', priority=priority) }}
+{% endmacro %}
