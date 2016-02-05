@@ -48,6 +48,6 @@
 {# TXT Records #}
 {% if item.TXT is defined %}
 {% for name,txt in item.A.items() %}
-{{ dns.txt(name, txt) }}
+{{ dns.TXT(name, txt) }}
 {% endfor %}
 {% endif %}
