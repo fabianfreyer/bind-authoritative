@@ -12,7 +12,7 @@
 {% if mx is mapping -%}
 {{
   dns.MX(
-    dns.domain(item.domain) if name not in mx else mx.name,
+    dns.domain(item.domain) if "name" not in mx else mx.name,
     mx.value,
     10 if priority not in mx else mx.priority)
 }}
