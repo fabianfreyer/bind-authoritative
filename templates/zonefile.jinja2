@@ -47,7 +47,7 @@
 {% endif %}
 {# TXT Records #}
 {% if item.TXT is defined %}
-{% for name,txt in item.A.items() %}
+{% for name,txt in item.TXT.items() %}
 {{ dns.TXT(name, txt) }}
 {% endfor %}
 {% endif %}
