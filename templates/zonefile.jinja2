@@ -14,7 +14,7 @@
   dns.MX(
     dns.domain(item.domain) if "name" not in mx else mx.name,
     mx.value,
-    10 if priority not in mx else mx.priority)
+    10 if "priority" not in mx else mx.priority)
 }}
 {%- else -%}
 {{
