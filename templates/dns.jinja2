@@ -35,5 +35,5 @@ $TTL {{ ttl }}
 {% endmacro %}
 
 {% macro TXT(entry, value, priority=0) %}
-{{ record(entry, value, type='txt', priority=priority) }}
+{{ record(entry, '"%s"' % value, type='txt', priority=priority) }}
 {% endmacro %}
