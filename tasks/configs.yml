@@ -7,6 +7,6 @@
     owner: root
     group: "{{ elao_bind_group }}"
     mode:  0644
-  with_items: elao_bind_configs
+  with_items: '{{ elao_bind_configs }}'
   notify:
     - bind restart
