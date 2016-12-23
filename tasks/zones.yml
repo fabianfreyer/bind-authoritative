@@ -2,18 +2,18 @@
 
 - name: zones > Directory
   file:
-    path:  "{{ elao_bind_zones_dir }}"
+    path:  "{{ bind_zones_dir }}"
     state: directory
-    owner: "{{ elao_bind_user }}"
-    group: "{{ elao_bind_group }}"
+    owner: "{{ bind_user }}"
+    group: "{{ bind_group }}"
 
 - name: zones > Templates
   template:
     src:  "{{ item.template | default('zonefile.jinja2') }}"
-    dest: "{{ elao_bind_zones_dir }}/{{ item.file | default('db.%s.zone' % item.domain) }}"
+    dest: "{{ bind_zones_dir }}/{{ item.file | default('db.%s.zone' % item.domain) }}"
     owner: root
-    group: "{{ elao_bind_group }}"
+    group: "{{ bind_group }}"
     mode:  0644
-  with_items: '{{ elao_bind_zones }}'
+  with_items: '{{ bind_zones }}'
   notify:
     - bind restart
