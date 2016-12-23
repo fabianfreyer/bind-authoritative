@@ -1,0 +1,28 @@
+options {
+	directory "{{bind_configs_dir}}";
+	listen-on-v6 { any; };
+};
+
+{% macro zone(zone_name) %}
+zone "{{ zone_name }}" {
+	type master;
+	file "{{ bind_zones_dir }}/db.{{ zone_name }}.zone";
+{% if bind_enable_notify %}
+	notify explicit;
+	also-notify { {% for notify in bind_notify %}{{ notify }};{% endfor %} };
+{% endif %}
+};
+{% endmacro %}
+
+{% macro rev_zone(network) %}
+zone "{{ zone_name }}" {
+	type master;
+	file "{{ bind_zones_dir }}/{{ network|regex_replace('^([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})/([0-9]{1,2})$', '\\3.\\2.\\1') }}.in-addr.arpa.zone";
+};
+{% endmacro %}
+
+{% for zones in bind_zones %}
+{{ zone(zones.domain) }}
+{% endfor %}
+
+{# {{ rev_zone(ansible_default_ipv4.address) }} #}

@@ -14,8 +14,11 @@ bind_logrotate_config:   []
 
 # Configs
 bind_configs_dir: /etc/bind
-bind_configs:     []
+bind_configs:
+- file: named.conf
+  template: named.conf.jinja2
 
 # Zones
 bind_zones_dir: "{{ bind_configs_dir }}/zones"
 bind_zones:     []
+bind_enable_notify: False
