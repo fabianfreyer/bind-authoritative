@@ -2,7 +2,7 @@
 
 - name: logs > Directory
   file:
-    path:  "{{ elao_bind_log_dir }}"
+    path:  "{{ bind_log_dir }}"
     state: directory
-    owner: "{{ elao_bind_user }}"
-    group: "{{ elao_bind_group }}"
+    owner: "{{ bind_user }}"
+    group: "{{ bind_group }}"

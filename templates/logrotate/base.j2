@@ -1,11 +1,11 @@
-{{ elao_bind_log_dir }}/*.log {
+{{ bind_log_dir }}/*.log {
     daily
     rotate 14
     compress
     delaycompress
     missingok
     notifempty
-    create 0664 {{ elao_bind_user }} {{ elao_bind_group }}
+    create 0664 {{ bind_user }} {{ bind_group }}
     postrotate
         /etc/init.d/bind9 reload > /dev/null
     endscript

@@ -1,21 +1,21 @@
 ---
 
 # User / Group
-elao_bind_user:  bind
-elao_bind_group: bind
+bind_user:  bind
+bind_group: bind
 
 # Logs
-elao_bind_log_dir: /var/log/bind
+bind_log_dir: /var/log/bind
 
 # Logrotate
-elao_bind_logrotate_file:     /etc/logrotate.d/bind
-elao_bind_logrotate_template: ~
-elao_bind_logrotate_config:   []
+bind_logrotate_file:     /etc/logrotate.d/bind
+bind_logrotate_template: ~
+bind_logrotate_config:   []
 
 # Configs
-elao_bind_configs_dir: /etc/bind
-elao_bind_configs:     []
+bind_configs_dir: /etc/bind
+bind_configs:     []
 
 # Zones
-elao_bind_zones_dir: "{{ elao_bind_configs_dir }}/zones"
-elao_bind_zones:     []
+bind_zones_dir: "{{ bind_configs_dir }}/zones"
+bind_zones:     []
