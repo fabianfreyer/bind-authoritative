@@ -51,3 +51,9 @@
 {{ dns.TXT(name, txt) }}
 {% endfor %}
 {% endif %}
+{# $INCLUDE statements #}
+{% if item.includes is defined %}
+{% for file in item.includes %}
+{{ dns.include(file) }}
+{% endfor %}
+{% endif %}
