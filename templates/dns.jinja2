@@ -37,3 +37,7 @@ $TTL {{ ttl }}
 {% macro TXT(entry, value, priority=0) %}
 {{ record(entry, '"%s"' % value, type='txt', priority=priority) }}
 {% endmacro %}
+
+{% macro include(file) %}
+$INCLUDE {{ file }}
+{% endmacro %}
