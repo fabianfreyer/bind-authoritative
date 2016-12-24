@@ -24,14 +24,14 @@ None.
 
 |Name|Default|Type|Description|
 |----|----|-----------|-------|
-`elao_bind_config_templates`|Array|Array|List of config files.
-`elao_bind_config_templates.named_conf`|-|String (filepath)|Custom path to global config file.
-`elao_bind_config_templates.named_conf_local`|-|String (filepath)|Custom path to local config file.
-`elao_bind_config_templates.named_conf_options`|-|String (filepath)|Custom path to options config file.
-`elao_bind_zones`|Array|Array|List of domain zones.
-`elao_bind_zones.domain`|-|String| domain name and TLD (Ex: elao.com).
-`elao_bind_zones.network`|-|String (filepath)|Zone network definition (Ex:172.16.1.0/24).
-`elao_bind_zones.responsible`|-|String (Email)|Contact mail address.
+`bind_config_templates`|Array|Array|List of config files.
+`bind_config_templates.named_conf`|-|String (filepath)|Custom path to global config file.
+`bind_config_templates.named_conf_local`|-|String (filepath)|Custom path to local config file.
+`bind_config_templates.named_conf_options`|-|String (filepath)|Custom path to options config file.
+`bind_zones`|Array|Array|List of domain zones.
+`bind_zones.domain`|-|String| domain name and TLD (Ex: elao.com).
+`bind_zones.network`|-|String (filepath)|Zone network definition (Ex:172.16.1.0/24).
+`bind_zones.responsible`|-|String (Email)|Contact mail address.
 
 ### Configuration example
 
